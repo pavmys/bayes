@@ -1,0 +1,13 @@
+* {
+    margin: 3;
+    padding: 0;
+}
+
+body {
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+}
+
+header {
+    text-align: center;
+}
