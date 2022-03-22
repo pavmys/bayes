@@ -4,6 +4,7 @@ let outputWords = document.querySelector(".output-words");
 for (let i = 0; i < 33; i++) {
     letters[i].addEventListener("click", () => {
         console.log(letters[i].value);
+        localStorage.setItem('chosen_letter', letters[i].value.toLowerCase());
     });
 }
 
@@ -19,3 +20,11 @@ for (let j = 0; j < wordsArr.length; j++) {
     lettersWordsArr.push(wordsArr[j].split(""));
 }
 console.log(lettersWordsArr);
+
+switcher = document.getElementById('on-off-button');
+game_run = false;
+switcher.addEventListener('click', () => {
+    game_run = true;
+    alert("Game started!");
+}
+);

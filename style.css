@@ -37,3 +37,13 @@ header, h3 {
 .input-letter, .output-words {
     text-align: center;
 }
+
+.button
+{
+    display: block;
+    border: solid 3px red;
+    background-color: lightsalmon;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
