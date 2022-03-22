@@ -1,13 +1,39 @@
 * {
-    margin: 3;
+    margin: 0;
     padding: 0;
 }
 
 body {
     font-family: Calibri, sans-serif;
     font-weight: bold;
+    text-align: center;
+    background-color: lightcyan;
 }
 
-header {
+header, h3 {
+    text-align: center;
+}
+
+.buttons-klavs {
+    margin: 5px;
+}
+
+.buttons-klavs .letter {
+    text-align: center;
+    font-size: 15px;
+}
+
+.words {
+    width: 100%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.words-h3 {
+    cursor: pointer;
+}
+
+.input-letter, .output-words {
     text-align: center;
 }
