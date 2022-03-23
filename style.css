@@ -16,6 +16,9 @@ header, h3 {
 
 .buttons-klavs {
     margin: 5px;
+    position: absolute;
+    bottom: 15px;
+    left: 370px;
 }
 
 .buttons-klavs .letter {
@@ -82,4 +85,15 @@ a
 #bukvy li
 {
     padding: 10px;
+}
+
+.empty-klitynka {
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+    float: left;
+}
+
+.output {
+    display: inline;
 }

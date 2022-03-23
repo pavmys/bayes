@@ -5,6 +5,7 @@ for (let i = 0; i < 33; i++) {
     letters[i].addEventListener("click", () => {
         console.log(letters[i].value);
         localStorage.setItem('chosen_letter', letters[i].value.toLowerCase());
+
     });
 }
 
@@ -13,10 +14,5 @@ $(".words-h3").click(function () {
     $(".words").toggle("slow");
 });
 
-let words = document.querySelector(".words");
-let wordsArr = words.innerHTML.split(",");
-let lettersWordsArr = [];
-for (let j = 0; j < wordsArr.length; j++) {
-    lettersWordsArr.push(wordsArr[j].split(""));
-}
-console.log(lettersWordsArr);
+
+
