@@ -4,6 +4,7 @@ let outputWords = document.querySelector(".output-words");
 for (let i = 0; i < 33; i++) {
     letters[i].addEventListener("click", () => {
         console.log(letters[i].value);
+        localStorage.setItem('chosen_letter', letters[i].value.toLowerCase());
     });
 }
 
