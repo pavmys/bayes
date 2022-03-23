@@ -20,11 +20,3 @@ for (let j = 0; j < wordsArr.length; j++) {
     lettersWordsArr.push(wordsArr[j].split(""));
 }
 console.log(lettersWordsArr);
-
-switcher = document.getElementById('on-off-button');
-game_run = false;
-switcher.addEventListener('click', () => {
-    game_run = true;
-    alert("Game started!");
-}
-);
