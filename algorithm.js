@@ -138,31 +138,50 @@ function run_game()
 {
     game = new Game(n.value);
     game.calc_start_probability();
-    alert(game.start_probability);
+    //alert(game.start_probability);
     game.choose_n_random_words();
-    alert(game.chosen_words);
+    inputN(n);
+    //alert(game.chosen_words);
     game.choose_secret_word();
-    alert(game.secret_word);
-    while (neyasno)
+    //alert(game.secret_word);
+    //while (neyasno)
     game.get_user_chosen_letter();
-    alert(game.chosen_letter); 
+    //alert(game.chosen_letter);
     game.calc_chance_to_get();
-    alert(game.chosen_letter);
-    alert(game.chosen_words);
-    alert(game.chance_to_get);
+    //alert(game.chosen_letter);
+    //alert(game.chosen_words);
+    //alert(game.chance_to_get);
     game.start_probability = game.final_probability;
 }
-n.addEventListener('change', () => {
-    run_game();
+
+    function inputN(arr) {
+        let n = arr.length;
+        let createDiv = document.querySelector(".output");
+        for (let i = 0; i < n; i++) {
+            let currentWord = arr[i];
+            for (let j = 0; j < currentWord.length; j++) {
+                let emptyKlitynka = document.createElement("div");
+                emptyKlitynka.className = "empty-klitynka";
+                createDiv.appendChild(emptyKlitynka);
+            }
+        }
+    }
+
+    let submitButton = document.querySelector(".submit");
+    submitButton.addEventListener("click", () => {
+        run_game();
+    });
+    // n.addEventListener('change', () => {
+
     // alert(Helper.count("hello", "l"));  // 2
     // alert(Helper.sum_of_array([1, 5, 3])); // 9
-});
+//});
 
-switcher = document.getElementById('on-off-button');
+//switcher = document.getElementById('on-off-button');
 //game_run = false;
-switcher.addEventListener('click', () => {
+//switcher.addEventListener('click', () => {
   //  game_run = true;
-    alert("Game started!");
-    run_game();
-}
-);
+    //alert("Game started!");
+    //run_game();
+//}
+//);
