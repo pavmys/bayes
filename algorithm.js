@@ -127,6 +127,15 @@ class Game
             this.final_probability[i] = this.new_probability[i] / sum_new_probability;
         }
     }
+
+    game_continue()
+    {
+            if (this.final_probability.count(true) > 1)
+            {
+                return true;
+            }
+        return false;
+    }
 }
 let n = document.getElementById('quantity');
 
@@ -134,29 +143,38 @@ let n = document.getElementById('quantity');
     {
         //run_game();
     }
+
 function run_game()
 {
     game = new Game(n.value);
     game.calc_start_probability();
     //alert(game.start_probability);
     game.choose_n_random_words();
-    inputN(n);
+    inputN(game.chosen_words);
+    alert(game.chosen_words);
     //alert(game.chosen_words);
     game.choose_secret_word();
     //alert(game.secret_word);
-    //while (neyasno)
+    // --- WAIT FOR INPUT LETTER ---
+    do
+    {
     game.get_user_chosen_letter();
     //alert(game.chosen_letter);
     game.calc_chance_to_get();
-    //alert(game.chosen_letter);
-    //alert(game.chosen_words);
-    //alert(game.chance_to_get);
+    game.calc_new_probability();
+    game.calc_final_probability();
     game.start_probability = game.final_probability;
+    console.log(game.final_probability);
+    }
+    while (game.game_continue());
 }
 
     function inputN(arr) {
         let n = arr.length;
+        // alert(n);
         let createDiv = document.querySelector(".output");
+        createDiv.innerHTML = "";
+        // game = null;
         for (let i = 0; i < n; i++) {
             let currentWord = arr[i];
             for (let j = 0; j < currentWord.length; j++) {
@@ -164,11 +182,16 @@ function run_game()
                 emptyKlitynka.className = "empty-klitynka";
                 createDiv.appendChild(emptyKlitynka);
             }
+            // додавання параграфа game.final_probability[i]
+            let breakline =  document.createElement("div");
+            breakline.className = "clear";
+            createDiv.appendChild(breakline);
         }
     }
 
     let submitButton = document.querySelector(".submit");
     submitButton.addEventListener("click", () => {
+        
         run_game();
     });
     // n.addEventListener('change', () => {
