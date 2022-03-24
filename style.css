@@ -111,13 +111,33 @@ a
     clear: left;
 }
 .output {
+    width: 500px;
     position: absolute;
-    /* border: 1px solid black; */
+    /*border: 1px solid black;*/
     /* margin: 10%; */
     display: inline;
     text-align: center;
     left: 10%;
     top: 15%;
     padding: 0;
+}
+
+.output p {
+    font-size: 40px;
+    float: right;
+}
+
+.input-vhad-slovo {
+    font-size: 18px;
+    position: absolute;
+    right: 500px;
+    top: 220px;
+}
+
+.input-vhad-button {
+    font-size: 18px;
+    position: absolute;
+    right: 400px;
+    top: 220px;
 }
 

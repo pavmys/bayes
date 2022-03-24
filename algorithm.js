@@ -71,6 +71,10 @@ class Game
     constructor(n)
     {
         this.n = n;
+        this.final_probability = new Array(this.n);
+        for (let i = 0; i < this.n; i++) {
+            this.final_probability[i] = 0;
+        }
     }
 
     calc_start_probability()
@@ -120,7 +124,6 @@ class Game
 
     calc_final_probability()
     {
-        this.final_probability = new Array(this.n);
         let sum_new_probability = Helper.sum_of_array(this.new_probability);
         for (let i = 0; i < this.n; i++ )
         {
@@ -156,8 +159,8 @@ function run_game()
     game.choose_secret_word();
     //alert(game.secret_word);
     // --- WAIT FOR INPUT LETTER ---
-    do
-    {
+    //do
+    //{
     game.get_user_chosen_letter();
     //alert(game.chosen_letter);
     game.calc_chance_to_get();
@@ -165,8 +168,10 @@ function run_game()
     game.calc_final_probability();
     game.start_probability = game.final_probability;
     console.log(game.final_probability);
-    }
-    while (game.game_continue());
+    //}
+    //while (true);
+    //while (game.game_continue());
+
 }
 
     function inputN(arr) {
@@ -183,6 +188,10 @@ function run_game()
                 createDiv.appendChild(emptyKlitynka);
             }
             // додавання параграфа game.final_probability[i]
+            let vidsotkyOutput = document.createElement("p");
+            createDiv.appendChild(vidsotkyOutput);
+            vidsotkyOutput.innerHTML = game.final_probability[i].toFixed(2) * 100 + "%";
+            //alert(game.final_probability[i].toFixed(2) * 100 + "%");
             let breakline =  document.createElement("div");
             breakline.className = "clear";
             createDiv.appendChild(breakline);
