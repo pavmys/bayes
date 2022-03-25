@@ -1,20 +1,21 @@
-// let letters = document.getElementsByClassName("letter");
-let outputWords = document.querySelector(".output-words")
+function pullFromLocalStorage(name) {
+    return JSON.parse(localStorage.getItem(name));
+}
 
-$(".words-h3").click(function () {
-    words.style.visibility = "visible";
-    $(".words").toggle("slow");
+
+let n = document.getElementById('quantity');
+n.addEventListener('change', () => { // встановити межі кількості слів
+    n.value = n.value < 3 ? 3 : n.value;
+    n.value = n.value > 10 ? 10 : n.value;
 });
 
+let letters_buttons = document.getElementsByClassName("letter");
+let submit_button = document.getElementsByClassName("submit");
 
-// $(".input-vhad-button").click(function() {
-//     let secret_word = localStorage.getItem("secret_word");
-//     if (secret_word != $(".input-vhad-slovo").val())
-//     {
-//         alert("You win!");
-//     }
-//     else
-//     {
-//         alert("You lose");
-//     }
-// })
+submit_button[0].addEventListener("click", () => {
+    for (let i = 0; i < letters_buttons.length; i++) {
+        letters_buttons[i].style = "background-color: black;";
+        letters_buttons[i].disabled = false;
+
+    }
+});

@@ -1,75 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Bayes Analyze of Data</title>
+    <title>Bayes Game</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
-        <h1>Баєсівський аналіз даних: гра</h1>    
-</header>
-    <label for="quantity">Кількість букв (between 3 and 10):</label>
+        <span class="header"><h1>Bayes Analysis Game</h1></span>
+    </header>
+    <label id="quantity-label" for="quantity"> How many words should be generated? </label>
     <input type="number" id="quantity" name="quantity" min="3" max="10">
-    <input type="button" class="submit" value="Підтвердити">
+    <br>
+    <input type="button" class="submit" value="Generate">
 
-    <h2 id="game_state"> Оберіть кількість слів </h2>
+    <h2 id="game_state"> Choose amount of words </h2>
 
-    <div class="output">
-        <!--<div class="empty-klitynka"></div>-->
-        <!--<p class="vidsotky-output"></p>-->
-    </div>
+    <div class="output"> </div>
     <br><br>
-    <!-- <div id="input">
-    <input type="text" class="input-vhad-slovo" placeholder="Введіть ваше слово:">
-    <input type="button" class="input-vhad-button" value="Перевірити">
-</div> -->
+
     <div class="buttons-klavs">
         <ul id="bukvy">
             <li>
-        <input type="button" class="letter" value="А">
-        <input type="button" class="letter" value="Б">
-        <input type="button" class="letter" value="В">
-        <input type="button" class="letter" value="Г">
-        <input type="button" class="letter" value="Ґ">
-        <input type="button" class="letter" value="Д">
-        <input type="button" class="letter" value="Е">
-        <input type="button" class="letter" value="Є">
-        <input type="button" class="letter" value="Ж">
-        <input type="button" class="letter" value="З">
-        <input type="button" class="letter" value="И">
-    </li>
-    <li>
-        <input type="button" class="letter" value="І">
-        <input type="button" class="letter" value="Ї">
-        <input type="button" class="letter" value="Й">
-        <input type="button" class="letter" value="К">
-        <input type="button" class="letter" value="Л">
-        <input type="button" class="letter" value="М">
-        <input type="button" class="letter" value="Н">
-        <input type="button" class="letter" value="О">
-        <input type="button" class="letter" value="П">
-        <input type="button" class="letter" value="Р">
-        <input type="button" class="letter" value="С">
-    </li>
-    <li>
-        <input type="button" class="letter" value="Т">
-        <input type="button" class="letter" value="У">
-        <input type="button" class="letter" value="Ф">
-        <input type="button" class="letter" value="Х">
-        <input type="button" class="letter" value="Ц">
-        <input type="button" class="letter" value="Ч">
-        <input type="button" class="letter" value="Ш">
-        <input type="button" class="letter" value="Щ">
-        <input type="button" class="letter" value="Ь">
-        <input type="button" class="letter" value="Ю">
-        <input type="button" class="letter" value="Я">
-    </li>
-    </ul>
+                <input type="button" class="letter" value="А">
+                <input type="button" class="letter" value="Б">
+                <input type="button" class="letter" value="В">
+                <input type="button" class="letter" value="Г">
+                <input type="button" class="letter" value="Ґ">
+                <input type="button" class="letter" value="Д">
+                <input type="button" class="letter" value="Е">
+                <input type="button" class="letter" value="Є">
+                <input type="button" class="letter" value="Ж">
+                <input type="button" class="letter" value="З">
+                <input type="button" class="letter" value="И">
+            </li>
+            <li>
+                <input type="button" class="letter" value="І">
+                <input type="button" class="letter" value="Ї">
+                <input type="button" class="letter" value="Й">
+                <input type="button" class="letter" value="К">
+                <input type="button" class="letter" value="Л">
+                <input type="button" class="letter" value="М">
+                <input type="button" class="letter" value="Н">
+                <input type="button" class="letter" value="О">
+                <input type="button" class="letter" value="П">
+                <input type="button" class="letter" value="Р">
+                <input type="button" class="letter" value="С">
+            </li>
+            <li>
+                <input type="button" class="letter" value="Т">
+                <input type="button" class="letter" value="У">
+                <input type="button" class="letter" value="Ф">
+                <input type="button" class="letter" value="Х">
+                <input type="button" class="letter" value="Ц">
+                <input type="button" class="letter" value="Ч">
+                <input type="button" class="letter" value="Ш">
+                <input type="button" class="letter" value="Щ">
+                <input type="button" class="letter" value="Ь">
+                <input type="button" class="letter" value="Ю">
+                <input type="button" class="letter" value="Я">
+            </li>
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="script.js"></script>
     <script src="algorithm.js"></script>
 </body>
+
 </html>
