@@ -1,25 +1,21 @@
-let letters = document.getElementsByClassName("letter");
-let outputWords = document.querySelector(".output-words");
-function choose(button)
-{
-    button.style = "background-color: black;";
-    button.disabled = true;
-    localStorage.setItem('chosen_letter', button.value.toLowerCase());
-}
-//console.log(letters[3].value);
-for (let i = 0; i < 33; i++) {
-    letters[i].addEventListener("click", () => {
-        choose(letters[i]);
-        // console.log(letters[i].value);
-        // letters[i].className = "chosen";
-        // localStorage.setItem('chosen_letter', letters[i].value.toLowerCase());
-    });
+function pullFromLocalStorage(name) {
+    return JSON.parse(localStorage.getItem(name));
 }
 
-$(".words-h3").click(function () {
-    words.style.visibility = "visible";
-    $(".words").toggle("slow");
+
+let n = document.getElementById('quantity');
+n.addEventListener('change', () => { // встановити межі кількості слів
+    n.value = n.value < 3 ? 3 : n.value;
+    n.value = n.value > 10 ? 10 : n.value;
 });
 
+let letters_buttons = document.getElementsByClassName("letter");
+let submit_button = document.getElementsByClassName("submit");
 
+submit_button[0].addEventListener("click", () => {
+    for (let i = 0; i < letters_buttons.length; i++) {
+        letters_buttons[i].style = "background-color: black;";
+        letters_buttons[i].disabled = false;
 
+    }
+});

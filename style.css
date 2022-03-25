@@ -7,17 +7,19 @@ body {
     font-family: Calibri, sans-serif;
     font-weight: bold;
     text-align: center;
-    background-color: lightcyan;
+    /* background-color: lightcyan; */
+    background: radial-gradient(circle, rgba(0, 255, 205, 1) 53%, rgba(0, 0, 0, 1) 100%);
 }
 
-header, h3 {
+header,
+h3 {
     text-align: center;
 }
 
 .buttons-klavs {
     margin: 5px;
     position: absolute;
-    bottom: 30%;
+    bottom: 20%;
     left: 40%;
 }
 
@@ -25,9 +27,16 @@ header, h3 {
     text-align: center;
     font-size: 25px;
     padding: 10px;
-    width: 40px;
-    background-color: darkred;
+    width: 50px;
+    height: 50px;
+    background-color: black;
     color: white;
+    border: solid 2px black;
+}
+
+.buttons-klavs .letter:active,
+.submit:active {
+    transform: scale(0.8);
 }
 
 .words {
@@ -35,31 +44,32 @@ header, h3 {
     text-align: center;
     border: 2px solid black;
     border-radius: 5px;
-    
 }
 
 .words-h3 {
     cursor: pointer;
 }
 
-.input-letter, .output-words {
+.input-letter,
+.output-words {
     text-align: center;
 }
 
-.button
-{
-    display: block;
-    border: solid 3px red;
-    background-color: lightsalmon;
-    width: 30%;
-    height: 20%;
-    border-radius: 20px;
+.submit {
+    background-color: black;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 32px;
     text-align: center;
-    padding: 25px 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* height: 40px; */
 }
 
-.chosen
-{
+.chosen {
     text-align: center;
     font-size: 25px;
     padding: 10px;
@@ -67,34 +77,27 @@ header, h3 {
     background-color: salmon;
     color: black;
 }
-a
-{
+
+a {
     text-decoration: none;
     color: black;
     font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-#container
-{
+#container {
     position: relative;
     margin-left: 40%;
     /* margin-top: 10%; */
-
 }
 
-#bukvy
-{
+#bukvy {
     margin: 8px;
     list-style: none;
-    border: solid 1px black;
-    width: 500px;
-    margin-left: 30%;
-
+    width: 650px;
+    margin-left: 20%;
 }
 
-
-#bukvy li
-{
+#bukvy li {
     padding: 10px;
 }
 
@@ -106,25 +109,25 @@ a
     margin: 3px;
 }
 
-.clear
-{
+.clear {
     clear: left;
 }
+
 .output {
     width: 500px;
     position: absolute;
-    /*border: 1px solid black;*/
+    /* border: 1px solid black; */
     /* margin: 10%; */
     display: inline;
     text-align: center;
-    left: 10%;
-    top: 15%;
+    left: 0%;
+    top: 20%;
     padding: 0;
 }
 
 .output p {
     font-size: 40px;
-    float: right;
+    /* float: left; */
 }
 
 .input-vhad-slovo {
@@ -141,3 +144,15 @@ a
     top: 220px;
 }
 
+.header {
+    font-family: "Audiowide", serif;
+}
+
+#quantity {
+    width: 50px;
+}
+
+#quantity-label,
+#quantity {
+    font-size: 30px;
+}
