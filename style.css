@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: Calibri, sans-serif;
+    font-family: "Audiowide", serif;
     font-weight: bold;
     text-align: center;
     /* background-color: lightcyan; */
@@ -17,6 +18,7 @@ h3 {
 }
 
 .buttons-klavs {
+    font-family: Calibri, serif;
     margin: 5px;
     position: absolute;
     bottom: 20%;
@@ -97,8 +99,9 @@ a {
     margin-left: 20%;
 }
 
-#bukvy li {
+#bukvy li input {
     padding: 10px;
+    /*margin: 3px;*/
 }
 
 .empty-klitynka {
@@ -113,21 +116,23 @@ a {
     clear: left;
 }
 
+
 .output {
+    font-family: 'Comfortaa', cursive;
     width: 500px;
     position: absolute;
     /* border: 1px solid black; */
     /* margin: 10%; */
     display: inline;
-    text-align: center;
-    left: 0%;
-    top: 20%;
+    /* text-align: center */
+    left: 5%;
+    top: 30%;
     padding: 0;
 }
 
 .output p {
     font-size: 40px;
-    /* float: left; */
+    text-align: center;
 }
 
 .input-vhad-slovo {
@@ -155,4 +160,80 @@ a {
 #quantity-label,
 #quantity {
     font-size: 30px;
+}
+
+.ask-vhad-word {
+    width: 500px;
+    height: 300px;
+    border-radius: 20px;
+    background: black;
+    color: cyan;
+    position: absolute;
+    left: 510px;
+    top: 240px;
+    z-index: 1;
+    opacity: 0;
+    animation: ani 2.5s forwards;
+}
+@keyframes ani {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.ask-vhad-word h1 {
+    float: right;
+    font-size: 130px;
+    font-weight: bold;
+}
+
+.ask-vhad-word h4, .ask-vhad-word p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ask-vhad-word h1 {
+    position: absolute;
+    right: 0;
+    top: 80px;
+    color: red;
+}
+
+
+.ask-vhad-word p {
+    position: absolute;
+    top: 45%;
+    left: 25%;
+}
+
+#answer-yes {
+    font-family: "Audiowide", serif;
+    font-size: 15px;
+    background: black;
+    color: white;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    bottom: 5px;
+    left: 35%;
+}
+
+#answer-no {
+    font-family: "Audiowide", serif;
+    font-size: 15px;
+    background: black;
+    color: white;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    bottom: 5px;
+    left: 55%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background: black;
 }

@@ -15,7 +15,6 @@
 
 <body>
     <header>
-
         <span class="header"><h1>Bayes Analysis Game</h1></span>
     </header>
     <label id="quantity-label" for="quantity"> How many words should be generated? </label>
@@ -23,18 +22,20 @@
     <br>
     <input type="button" class="submit" value="Generate">
 
-    <h2 id="game_state"> Choose amount of words </h2>
-
     <div class="output"> </div>
     <br><br>
 
-    <input class="input-vhad-slovo" placeholder="Введіть ваше слово:" type="text">
-    <input class="input-vhad-button" type="button" value="Перевірити">
+    <div class="ask-vhad-word" style="visibility: hidden">
+        <h4>Your word is</h4>
+        <p class="expected-word">slovo</p>
+        <h1>?</h1>
+        <input type="button" id="answer-yes" class="answer" value="Yes">
+        <input type="button" id="answer-no" class="answer" value="No">
+    </div>
 
     <div class="buttons-klavs">
         <ul id="bukvy">
             <li>
-
                 <input type="button" class="letter" value="А">
                 <input type="button" class="letter" value="Б">
                 <input type="button" class="letter" value="В">
@@ -77,8 +78,13 @@
         </ul>
     </div>
 
+    <footer>
+        <h1 class="footer-warning"></h1>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="script.js"></script>
+    <script src="classes.js"></script>
     <script src="algorithm.js"></script>
 </body>
 
