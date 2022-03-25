@@ -17,7 +17,7 @@ header, h3 {
 .buttons-klavs {
     margin: 5px;
     position: absolute;
-    bottom: 30%;
+    bottom: 20%;
     left: 40%;
 }
 
@@ -113,18 +113,18 @@ a
 .output {
     width: 500px;
     position: absolute;
-    /*border: 1px solid black;*/
+    /* border: 1px solid black; */
     /* margin: 10%; */
     display: inline;
     text-align: center;
     left: 10%;
-    top: 15%;
+    top: 20%;
     padding: 0;
 }
 
 .output p {
     font-size: 40px;
-    float: right;
+    /* float: left; */
 }
 
 .input-vhad-slovo {

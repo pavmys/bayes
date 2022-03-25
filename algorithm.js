@@ -31,6 +31,8 @@ var dictionary =
 
 var alphabet = "абвгґдеєжзиійїклмнопрстуфхцчшщьюя";
 
+var gameState = document.getElementById("game_state");
+
 class Helper
 {
     static getRandom(length) { return Math.floor(Math.random()*(length - 1)); }
@@ -44,7 +46,15 @@ class Helper
 
     static count(str, char)
     {
-        return str.split(char).length - 1
+        let res = str.split(char).length - 1;
+        if (res)
+        {
+            return res;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     static getRandomSample(array, size) {
@@ -92,15 +102,20 @@ class Game
         this.chosen_words = Helper.getRandomSample(dictionary, this.n);
     }
 
-    choose_secret_word()
-    {
-        this.secret_word = Helper.getRandomChoice(this.chosen_words);
-    }
+    // choose_secret_word()
+    // {
+    //     this.secret_word = Helper.getRandomChoice(this.chosen_words);
+    //     localStorage.setItem("secret_word", this.secret_word);
+    // }
 
     get_user_chosen_letter()
     {
+        console.log(localStorage.getItem("chosen_letter"));
+        if (!localStorage.getItem("chosen_letter"))
+        {
+        }
         this.chosen_letter = localStorage.getItem("chosen_letter");
-        localStorage.setItem("chosen_letter", undefined);
+        localStorage.removeItem("chosen_letter");
     }
 
     calc_chance_to_get()
@@ -124,96 +139,125 @@ class Game
 
     calc_final_probability()
     {
+        this.calc_new_probability();
         let sum_new_probability = Helper.sum_of_array(this.new_probability);
         for (let i = 0; i < this.n; i++ )
         {
             this.final_probability[i] = this.new_probability[i] / sum_new_probability;
         }
     }
-
-    game_continue()
+    
+    show_n_random_words()
     {
-            if (this.final_probability.count(true) > 1)
-            {
-                return true;
-            }
-        return false;
+        let output = document.querySelector(".output");
+        output.innerHTML = "";
+        for (let i = 0; i < this.n; i++)
+        {
+            let paragraph = document.createElement("p");
+            let br = document.createElement("br");
+            paragraph.innerHTML = this.chosen_words[i];
+            output.appendChild(paragraph);
+            // output.appendChild(br);
+            // output.appendChild(br);
+            // let breakline =  document.createElement("div");
+            // breakline.className = "clear";
+            // output.appendChild(breakline);
+        }
     }
+
+    show_final_probability()
+    {
+        this.show_n_random_words();
+        let output = document.querySelector(".output");
+        for (let i = 0; i < this.n; i++)
+        {
+            output.children[i].innerHTML += ("  " + (game.final_probability[i] * 100).toFixed(2) + "%"); 
+
+    }
+
+    // should_stop()
+    // {
+    //     for (let i = 0; i < this.n; i++)
+    //     {
+    //         if (this.final_probability[i] == 1)
+    //         {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+}
+
+    run()
+    {
+        // do
+        // {
+        this.get_user_chosen_letter(); 
+        this.calc_chance_to_get();
+        this.calc_new_probability();
+        this.calc_final_probability();
+        this.show_final_probability();
+        
+        // while(game.should_stop())
+    }
+
 }
 let n = document.getElementById('quantity');
-
-    if (localStorage.getItem("chosen_letter"))
-    {
-        //run_game();
-    }
-
 function run_game()
 {
     game = new Game(n.value);
-    game.calc_start_probability();
-    //alert(game.start_probability);
-    game.choose_n_random_words();
-    inputN(game.chosen_words);
+    
     alert(game.chosen_words);
-    //alert(game.chosen_words);
     game.choose_secret_word();
-    //alert(game.secret_word);
-    // --- WAIT FOR INPUT LETTER ---
-    //do
-    //{
     game.get_user_chosen_letter();
-    //alert(game.chosen_letter);
+    
     game.calc_chance_to_get();
     game.calc_new_probability();
     game.calc_final_probability();
+    inputN(game.chosen_words);
     game.start_probability = game.final_probability;
     console.log(game.final_probability);
-    //}
-    //while (true);
-    //while (game.game_continue());
 
 }
 
     function inputN(arr) {
         let n = arr.length;
-        // alert(n);
         let createDiv = document.querySelector(".output");
         createDiv.innerHTML = "";
-        // game = null;
         for (let i = 0; i < n; i++) {
-            let currentWord = arr[i];
-            for (let j = 0; j < currentWord.length; j++) {
-                let emptyKlitynka = document.createElement("div");
-                emptyKlitynka.className = "empty-klitynka";
-                createDiv.appendChild(emptyKlitynka);
-            }
-            // додавання параграфа game.final_probability[i]
             let vidsotkyOutput = document.createElement("p");
             createDiv.appendChild(vidsotkyOutput);
-            vidsotkyOutput.innerHTML = game.final_probability[i].toFixed(2) * 100 + "%";
-            //alert(game.final_probability[i].toFixed(2) * 100 + "%");
-            let breakline =  document.createElement("div");
-            breakline.className = "clear";
-            createDiv.appendChild(breakline);
+            vidsotkyOutput.innerHTML = (game.final_probability[i] * 100).toFixed(2) + "%";
         }
     }
 
     let submitButton = document.querySelector(".submit");
     submitButton.addEventListener("click", () => {
         
-        run_game();
+        gameState.innerHTML = "Загадайте одне із запропонованих слів<br>Оберіть букву із загаданого слова";
+        game = new Game(n.value);
+        game.choose_n_random_words();
+        game.show_n_random_words();             
+        game.calc_start_probability();
+        // game.run();
     });
-    // n.addEventListener('change', () => {
+    n.addEventListener('change', () => {
+        n.value = n.value < 3 ? 3 : n.value;
+        n.value = n.value > 10 ? 10 : n.value;
+});
 
-    // alert(Helper.count("hello", "l"));  // 2
-    // alert(Helper.sum_of_array([1, 5, 3])); // 9
-//});
-
-//switcher = document.getElementById('on-off-button');
-//game_run = false;
-//switcher.addEventListener('click', () => {
-  //  game_run = true;
-    //alert("Game started!");
-    //run_game();
-//}
-//);
+let letters = document.getElementsByClassName("letter");
+function choose(button)
+{
+    button.style = "background-color: black;";
+    button.disabled = true;
+    localStorage.clear();
+    localStorage.setItem('chosen_letter', button.value.toLowerCase());
+}
+for (let i = 0; i < 33; i++) {
+    letters[i].addEventListener("click", () => {
+        choose(letters[i]);
+        game.run();
+        // localStorage.setItem('chosen_letter', letters[i].value.toLowerCase());
+    });
+}
