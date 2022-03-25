@@ -1,22 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: Calibri, sans-serif;
+    font-family: "Audiowide", serif;
     font-weight: bold;
     text-align: center;
-    /* background-color: lightcyan; */
     background: radial-gradient(circle, rgba(0, 255, 205, 1) 53%, rgba(0, 0, 0, 1) 100%);
 }
 
-header,
-h3 {
+header {
     text-align: center;
 }
 
 .buttons-klavs {
+    font-family: Calibri, serif;
     margin: 5px;
     position: absolute;
     bottom: 20%;
@@ -39,25 +39,8 @@ h3 {
     transform: scale(0.8);
 }
 
-.words {
-    width: 100%;
-    text-align: center;
-    border: 2px solid black;
-    border-radius: 5px;
-}
-
-.words-h3 {
-    cursor: pointer;
-}
-
-.input-letter,
-.output-words {
-    text-align: center;
-}
-
 .submit {
     background-color: black;
-    /* Green */
     border: none;
     color: white;
     padding: 10px 32px;
@@ -66,28 +49,6 @@ h3 {
     display: inline-block;
     font-size: 18px;
     font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    /* height: 40px; */
-}
-
-.chosen {
-    text-align: center;
-    font-size: 25px;
-    padding: 10px;
-    width: 40px;
-    background-color: salmon;
-    color: black;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-    font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-#container {
-    position: relative;
-    margin-left: 40%;
-    /* margin-top: 10%; */
 }
 
 #bukvy {
@@ -97,51 +58,23 @@ a {
     margin-left: 20%;
 }
 
-#bukvy li {
+#bukvy li input {
     padding: 10px;
 }
 
-.empty-klitynka {
-    width: 40px;
-    height: 40px;
-    border: 2px solid black;
-    float: left;
-    margin: 3px;
-}
-
-.clear {
-    clear: left;
-}
-
 .output {
+    font-family: 'Comfortaa', cursive;
     width: 500px;
     position: absolute;
-    /* border: 1px solid black; */
-    /* margin: 10%; */
     display: inline;
-    text-align: center;
-    left: 0%;
-    top: 20%;
+    left: 5%;
+    top: 30%;
     padding: 0;
 }
 
 .output p {
     font-size: 40px;
-    /* float: left; */
-}
-
-.input-vhad-slovo {
-    font-size: 18px;
-    position: absolute;
-    right: 500px;
-    top: 220px;
-}
-
-.input-vhad-button {
-    font-size: 18px;
-    position: absolute;
-    right: 400px;
-    top: 220px;
+    text-align: center;
 }
 
 .header {
@@ -155,4 +88,82 @@ a {
 #quantity-label,
 #quantity {
     font-size: 30px;
+}
+
+.ask-vhad-word {
+    width: 500px;
+    height: 200px;
+    border-radius: 20px;
+    background: black;
+    color: cyan;
+    position: absolute;
+    left: 750px;
+    top: 130px;
+    z-index: 1;
+    opacity: 0;
+    animation: ani 2.5s forwards;
+}
+
+@keyframes ani {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.ask-vhad-word h1 {
+    float: right;
+    font-size: 130px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 15%;
+    color: red;
+}
+
+.ask-vhad-word h4,
+.ask-vhad-word p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ask-vhad-word p {
+    position: absolute;
+    top: 45%;
+    left: 25%;
+}
+
+#answer-yes,
+#answer-no {
+    font-family: "Audiowide", serif;
+    font-size: 15px;
+    background: black;
+    color: white;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    bottom: 5px;
+}
+
+#answer-yes {
+    left: 35%;
+}
+
+#answer-no {
+    left: 55%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background: black;
+}
+
+.expected-word {
+    margin-left: 15%;
 }
