@@ -12,7 +12,17 @@ class Helper {
     static count(array, element) {
         let counter = 0;
         for (let i = 0; i < array.length; i++) {
-            if (array[i] == element) {
+            if (array[i] === element) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    static countNans(array) {
+        let counter = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (isNaN(array[i])) {
                 counter++;
             }
         }
@@ -42,9 +52,6 @@ class Game {
     constructor(n) {
         this.n = n;
         this.final_probability = new Array(this.n);
-        // for (let i = 0; i < this.n; i++) {
-        //     this.final_probability[i] = 0;
-        // }
     }
 
     calc_start_probability() {
@@ -109,7 +116,8 @@ class Game {
         let showDivExpected = document.querySelector(".ask-vhad-word");
         showDivExpected.style.visibility = "visible";
         let expectedWord = document.querySelector(".expected-word");
-        expectedWord.innerHTML = this.chosen_words[this.final_probability.indexOf(Math.max(...this.final_probability))];
+        let index = this.final_probability.indexOf(Math.max(...this.final_probability));
+        expectedWord.innerHTML = this.chosen_words[index] ? this.chosen_words[index] : "Undefined";
         let footerWarning = document.querySelector(".footer-warning");
 
         let answer = document.getElementsByClassName("answer");
@@ -118,38 +126,31 @@ class Game {
                 if (answer[i].value === "Yes") {
                     if (!this.text === "You lost!") {
                         footerWarning.innerHTML = "You won!";
-                    }
-                    else {
+                    } else {
                         footerWarning.innerHTML = "You lost!";
                     }
-                        //$(".footer-warning").show().delay(2000).fadeOut();
-                        showDivExpected.style.visibility = "hidden";
+                    $(".footer-warning").show().delay(2000).fadeOut();
+                    showDivExpected.style.visibility = "hidden";
 
-                }
-                else {
+                } else {
                     showDivExpected.style.visibility = "hidden";
                     document.querySelector(".footer-warning").innerHTML = "Choose another letter!";
-                    //$(".footer-warning").show().delay(4000).fadeOut();
+                    $(".footer-warning").show().delay(4000).fadeOut();
                 }
             });
         }
     }
 
     check_100() {
-        let counter = 0;
-        for (let i = 0; i < this.n; i++) {
-            if (this.final_probability[i] === 1) {
-                this.text = "You won!";
-            }
-            if (this.final_probability[i] === 0) {
-                counter++;
-            }
+        this.text = "Choose letter";
+        if (Helper.count(this.final_probability, 1) === 1) {
+            this.text = "You won!";
         }
-        if (counter === this.n) {
+        if (Helper.count(this.final_probability, 0) === this.n || Helper.countNans(this.final_probability) === this.n) {
             this.text = "Wrong letter of wrong word";
         }
-        document.querySelector(".footer-warning").innerHTML = text;
-        //$(".footer-warning").show().delay(4000).fadeOut();
+        document.querySelector(".footer-warning").innerHTML = this.text;
+        $(".footer-warning").show().delay(4000).fadeOut();
     }
 
     run() {
@@ -158,8 +159,8 @@ class Game {
         this.calc_new_probability();
         this.calc_final_probability();
         this.show_final_probability();
-        this.show_expected_word();
         this.check_100();
+        this.show_expected_word();
         setTimeout({}, 1000);
         this.start_probability = this.final_probability;
         timeoutId = setInterval(this.run, 3000);

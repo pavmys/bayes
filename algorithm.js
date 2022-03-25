@@ -1,6 +1,3 @@
-// function pushToLocalStorage(name, array) {
-//     localStorage.setItem(name, JSON.stringify(array));
-// }
 var dictionary = ['абетка',
     'баран',
     'вогонь',
@@ -32,24 +29,19 @@ var dictionary = ['абетка',
 ];
 
 var alphabet = "абвгґдеєжзиійїклмнопрстуфхцчшщьюя";
-var gameState = document.getElementById("game_state");
-
-
 var game;
 let submitButton = document.querySelector(".submit");
 
 document.querySelector(".footer-warning").innerHTML = "Choose amount of words!";
-//$(".footer-warning").show().delay(7000).fadeOut();
+$(".footer-warning").show().delay(7000).fadeOut();
 submitButton.addEventListener("click", () => {
     game = new Game(n.value); // створили нову гру
 
     document.querySelector(".footer-warning").innerHTML = "Guess one of suggested words<br>Choose a letter from guessed word";
-    //$(".footer-warning").show().delay(7000).fadeOut();
+    $(".footer-warning").show().delay(7000).fadeOut();
     game.choose_n_random_words(); // вибрали н випадкових слів зі словника 
     game.show_n_random_words(); // відобразили вибрані слова
     game.calc_start_probability(); // обчислили початкові ймовірності
-    // game.run(); // запустили гру: шанс отримати, нова та фінальна ймовірності
-    //game.start_probability = game.final_probability;
 });
 let letters = document.getElementsByClassName("letter");
 

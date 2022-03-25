@@ -1,4 +1,4 @@
-/*var alphabet = "абвгґдеєжзиійїклмнопрстуфхцчшщьюя";
+var alphabet = "абвгґдеєжзиійїклмнопрстуфхцчшщьюя";
 let createLi = document.createElement("li");
 createLi.style.padding = "10px";
 for (let i = 0; i < 33; i++) {
@@ -10,8 +10,7 @@ for (let i = 0; i < 33; i++) {
     input.className = "letter";
     input.value = alphabet[i].toUpperCase();
     createLi.appendChild(input);
-    /!*createLi.innerHTML = `<input type='button' className='letter' value='${alphabet[i].toUpperCase()}'>`;*!/
-}*/
+}
 
 let n = document.getElementById('quantity');
 n.addEventListener('change', () => { // встановити межі кількості слів
@@ -23,6 +22,8 @@ let letters_buttons = document.getElementsByClassName("letter");
 let submit_button = document.getElementsByClassName("submit");
 
 submit_button[0].addEventListener("click", () => {
+    let showDivExpected = document.querySelector(".ask-vhad-word");
+    showDivExpected.style.visibility = "hidden";
     for (let i = 0; i < letters_buttons.length; i++) {
         letters_buttons[i].style = "background-color: black;";
         letters_buttons[i].disabled = false;
